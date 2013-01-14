@@ -1,21 +1,4 @@
-<!DOCTYPE html> 
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>FoodZone</title> 
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-</head> 
-<body>
-	<div id="header">
-	</div>
-	<div id="header2">
-		<a href="#" class="logo"><span class="one">Food</span class="one"><img src="images/z2.png" alt="Z"/><span class="two">one</span>
-		</a>
-		<a href="#" class="loginbtn">Log in</a>
-	</div>	
-	<div id="page">
+		<div id="page">
 		<h1>Blog</h1>
 		<ul class="categories">
 			<li><a href="#" class="selected">List All</a></li>
@@ -66,8 +49,3 @@
 			<div class="border"></div>	
 		</div>	
 	</div>
-	<div id="footer">
-	</div>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/custom.js" type="text/javascript"></script>
-</body>
