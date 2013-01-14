@@ -10,8 +10,10 @@
 <body>
 <?PHP
 include("model/viewModel.php");
+include("model/blogModel.php");
 
 $getv = new viewModel();
+$bmodel = new blogModel();
 
 $getv->getView("views/blogHeader.php");
 
@@ -19,17 +21,16 @@ if(!empty($_GET["get"])){
 	
 	if($_GET["get"]=="blog"){
 		
-		$getv->getView("views/blog.php");
-		echo 'empty string';
-
+		$getv->getView("views/blog.php", $data);
+		
 	}else if($_GET["get"]=="showlogin"){
 
 		$getv->getView("views/loginForm.php");
 	}
 
 }else{
-	
-	$getv->getView("views/blog.php");
+	$data = $bmodel->getAllPosts();
+	$getv->getView("views/blog.php", $data);
 }
 	$getv->getView("views/footer.php");
 		

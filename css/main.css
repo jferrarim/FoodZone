@@ -179,13 +179,16 @@ span.two{
 .accordion{
 	clear:both;
 }
+.section{
+	margin-bottom: 10px;
+}
 .section a{
 	text-decoration: none;
 }
 .section a h4:hover{
 	color:#9B1F28;
 }
-.section a:visited{
+.section a:link, .section a:visited{
 	color:#000;
 }
 .ingredients{
