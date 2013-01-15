@@ -1,4 +1,6 @@
 <?PHP
+	
+	session_start();
 
 	if(!empty($_GET["controller"])){
 		
@@ -10,10 +12,14 @@
 		}else if($_GET["controller"]=="blog"){
 			
 			include('controllers/blog.php');
-		} 
-	
-	}else{
+		}
+
+		}else if($_GET["controller"]=="session"){
+			
+			include('controllers/blog.php');
+
+		}else{
 		
-		include('controllers/blog.php');
+	include('controllers/blog.php');
 }		
 ?>

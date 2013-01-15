@@ -62,6 +62,13 @@ span.two{
 	bottom: 9px;
 	right: 17px;
 }
+.welcome{
+	color: white;
+	margin: 0;
+	float: right;
+	margin-right: 35px;
+	margin-top: 5px;
+}
 .loginbtn{
 	display: block;
 	color: #DDD;
@@ -80,8 +87,26 @@ span.two{
 	right: 27px;
 	bottom: 40px;
 }
-.loginbtn:hover{
+.loginbtn:hover, .backbtn:hover{
 	color: #FFF;
+}
+.backbtn{
+	display: block;
+	color: #DDD;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+	padding:4px 12px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .2),inset 0 1px 0 rgba(255, 255, 255, .3);
+	-moz-box-shadow: 0 1px 0 rgba(255,255,255,.2),inset 0 1px 0 rgba(255,255,255,.3);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .2),inset 0 1px 0 rgba(255, 255, 255, .3);
+	float: left;
+	position: relative;
+	bottom: 74px;
+	left: 11px;
 }
 #page{
 	width:960px;
@@ -152,12 +177,34 @@ span.two{
 .post p{
 	width:390px;
 }
+.deletebtn{
+	display: block;
+	width: 64px;
+	float: left;
+	margin-right: 40px;
+	text-decoration: none;
+}
+.editbtn{
+	display: block;
+	width: 47px;
+	float: left;
+	text-decoration: none;
+	margin-bottom: 32px;
+}
+.newpost{
+	display: block;
+	width: 84px;
+	float: right;
+	text-decoration: none;
+	margin-right: 17px;
+}
 .border{
 	border-bottom: 1px solid silver;
 	width:650px;
 	margin: 0 auto;
 	margin-top:10px;
 	margin-bottom:10px;
+	clear:both;
 }
 .post .image{
 	width:200px;
@@ -185,7 +232,7 @@ span.two{
 .section a{
 	text-decoration: none;
 }
-.section a h4:hover{
+.section a h4:hover, .deletebtn:hover, .editbtn:hover, .newpost:hover{
 	color:#9B1F28;
 }
 .section a:link, .section a:visited{

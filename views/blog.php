@@ -1,4 +1,10 @@
 		<div id="page">
+			<?PHP
+
+				if(isset($_SESSION["username"])){
+					echo "<a href='?controller=blog&get=showaddform' class='newpost'><i class='icon-comment-alt'></i> new post</a>";
+				}
+			?>
 		<h1>Blog</h1>
 		<ul class="categories">
 			<li><a href="?controller=blog" class="selected">List All</a></li>
@@ -32,6 +38,13 @@
 				echo "<div>".$x["comments"]."</div>";	
 				echo "</div>";	
 				echo "</div>";
+
+				if(isset($_SESSION["username"])){
+	 	
+	 				echo "<a href='?controller=blog&get=deletepost&id=".$x['id']."'' class='deletebtn'><i class='icon-remove-sign'></i> Delete</a>";
+	 				echo "<a href='?controller=blog&get=showeditform&id=".$x['id']."' class='editbtn'><i class='icon-edit'></i> Edit</a>";
+				}
+
 				echo "<div class='border'></div>";	
 				echo "</div>";
 			};

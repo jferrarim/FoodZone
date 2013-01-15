@@ -26,6 +26,35 @@ if(!empty($_GET["get"])){
 	}else if($_GET["get"]=="showlogin"){
 
 		$getv->getView("views/loginForm.php");
+	
+	}else if($_GET["get"] == "deletepost"){
+		
+		$deletedata = $bmodel->deletepost($_GET["id"]);
+		$deletedata = $bmodel->getAllPosts();
+		$getv->getView("views/blog.php", $deletedata);
+	
+	}else if($_GET["get"] == "showeditform"){
+
+		$editdata = $bmodel->getPost($_GET["id"]);
+		$getv->getView("views/editForm.php", $editdata);
+
+	}else if($_GET["get"] == "updatepost"){
+		
+		$bmodel->update($_POST["uname"], $_POST["image"], $_POST["title"], $_POST["desc"], $_POST["ingredients"], $_POST["directions"], $_POST["id"]);
+		$getv->getView("views/searchForm.php");
+		$data = $bmodel->getAllPosts();
+		$getv->getView("views/body.php",$data);
+
+	}else if($_GET["get"]=="showaddform"){
+		
+		$getv->getView("views/addForm.php");
+
+	}else if($_GET["get"] == "addpost"){
+		
+		$bmodel->addpost($_POST["uname"], $_POST["title"], $_POST["image"], $_POST["desc"], $_POST["ingredients"], $_POST["directions"]);
+		$data = $bmodel->getAllPosts();
+		$getv->getView("views/blog.php",$data);
+
 	}
 
 }else{

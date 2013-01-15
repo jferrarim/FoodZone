@@ -26,10 +26,10 @@ class blogModel{
 		$statement->execute(array($uemail,$uname,$ufriends));
 	}
 	
-	public function deleteUser($id){
+	public function deletepost($id){
 		
 		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-		$query = "delete from contactlist where id = :passedin";
+		$query = "delete from posts where id = :passedin";
 		$statement = $db->prepare($query);
 		
 		$statement->execute(array(":passedin"=>$id));
