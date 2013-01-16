@@ -28,16 +28,30 @@ class blogModel{
 		$statement->execute(array(":passedin"=>$category));
 		
 		$result = $statement->fetchAll();
-        
+       
+        throw new Exception("Error Processing Request: {$category}", 1);
+       	
+
         return $result;
+
+
 	    
 	}
 
+	 // public function addpost($un, $category, $title, $description, $ingredients, $directions){
+		
+	 // 	$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
+	 // 	$query = "insert into posts (username, category, title, description, ingredients, directions) values (?, ?, ?, ?, ?, ?)";
+	 // 	$statement = $db->prepare($query);
+	 // 	$statement->execute(array($un,$category,$title,$description,$ingredients,$directions));
+ 	// }
+
 	public function addpost($un, $category, $title, $description, $ingredients, $directions){
+		
 		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-		$query = "insert into posts (username, category, title, description, ingredients, directions) values (?, ?, ?, ?, ?, ?)";
+		$query = "insert into posts (username, category, title, description, ingredients, directions) values (:username, :category, :title, :description, :ingredients, :directions)";
 		$statement = $db->prepare($query);
-		$statement->execute(array($un,$category,$title,$description,$ingredients,$directions));
+		$statement->execute(array(":username"=>$un,":category"=>$category,":title"=>$title,":description"=>$description,":ingredients"=>$ingredients,":directions"=>$directions));
 	}
 	
 	public function deletepost($id){

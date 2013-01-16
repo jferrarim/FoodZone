@@ -4,7 +4,7 @@
 	<div class="post">
 
 		<div id="outerForm">			
-            <form method="post" action="?controller=blog&action=addpost">
+            <form method="post" enctype="multipart/form-data" action="?controller=blog&get=addpost">
             	<div id="formFields">
             		<label>Upload a post image</label>
       	    		<input class="upload" type="file" name="fileName" />

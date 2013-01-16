@@ -15,7 +15,7 @@
 			foreach($par as $x){
 				echo "<div class='post'>";
 				echo "<div class='image'>";
-				echo "<a href='#'><img src='postImages/".$x["title"].".jpg' width='200' height='200' alt='banana bread'></a>";
+				echo "<a href='#'><img src='postImages/".$x["title"].".jpg' width='200' height='200' alt='".$x["title"]."'></a>";
 				echo "</div>";
 				echo "<div class='post-right'>";
 				echo "<h2>".$x["title"]."</h2>";

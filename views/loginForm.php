@@ -2,7 +2,7 @@
 	<div id="page">
 		<div id="register_form">
 			<div id="outerForm">
-				<form name="loginForm" action="?controller=session&action=checklogin" method="post">
+				<form name="loginForm" action="?controller=session&get=checklogin" method="post">
 					<div id="view">
 						<h2>Login</h2>
 		      	    	<input type="text" name="uname" value="" placeholder="Username"/>

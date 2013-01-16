@@ -59,8 +59,11 @@ if(!empty($_GET["get"])){
 
 	}else if($_GET["get"] == "addpost"){
 		
-		//$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
-		//$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"]);
+		$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
+		
+		//var_dump($_FILES["fileName"]);
+
+		$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 
