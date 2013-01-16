@@ -3,11 +3,11 @@
 */
 (function($){
 
+
 	// Blog Subnav
 	$('.categories li a').bind('click', (function(e) {
 		$('li a').removeClass('selected');
 		$(this).addClass('selected');
-		return false;
 	}));
 
 

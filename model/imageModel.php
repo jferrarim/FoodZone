@@ -67,12 +67,12 @@
 		
 		}
 		
-		public function pictureUpload($file,$uname){
+		public function pictureUpload($file,$title){
 		
 			$tempfile = $file["tmp_name"];
-			$path = "userImages/";
+			$path = "postImages/";
 			$jpg = ".jpg";
-			move_uploaded_file($tempfile,$path.$uname.$jpg);
+			move_uploaded_file($tempfile,$path.$title.$jpg);
 			//move_uploaded_file($tempfile,$file["name"]);
 			
 			//echo $tempfile;

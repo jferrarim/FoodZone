@@ -11,9 +11,11 @@
 <?PHP
 include("model/viewModel.php");
 include("model/blogModel.php");
+include("model/imageModel.php");
 
 $getv = new viewModel();
 $bmodel = new blogModel();
+$imgmodel = new img();
 
 $getv->getView("views/blogHeader.php");
 
@@ -21,8 +23,14 @@ if(!empty($_GET["get"])){
 	
 	if($_GET["get"]=="blog"){
 		
+		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php", $data);
-		
+	
+	}else if($_GET["get"]=="showbycategory"){	
+
+		$data = $bmodel->getPosts($_GET["category"]);
+		$getv->getView("views/blog.php", $data);
+
 	}else if($_GET["get"]=="showlogin"){
 
 		$getv->getView("views/loginForm.php");
@@ -47,13 +55,16 @@ if(!empty($_GET["get"])){
 
 	}else if($_GET["get"]=="showaddform"){
 		
-		$getv->getView("views/addForm.php");
+		$getv->getView("views/postForm.php");
 
 	}else if($_GET["get"] == "addpost"){
 		
-		$bmodel->addpost($_POST["uname"], $_POST["title"], $_POST["image"], $_POST["desc"], $_POST["ingredients"], $_POST["directions"]);
+		//$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
+		//$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
+
+		echo $_FILES["fileName"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"];
 
 	}
 

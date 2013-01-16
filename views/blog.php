@@ -8,14 +8,14 @@
 		<h1>Blog</h1>
 		<ul class="categories">
 			<li><a href="?controller=blog" class="selected">List All</a></li>
-			<li><a href="?controller=blog&get=shownews">News</a></li>
-			<li><a href="?controller=blog&get=showrecipes">Recipes</a></li>
+			<li><a href="?controller=blog&get=showbycategory&category=news">News</a></li>
+			<li><a href="?controller=blog&get=showbycategory&category=recipe">Recipes</a></li>
 		</ul>
 		<?PHP
 			foreach($par as $x){
 				echo "<div class='post'>";
 				echo "<div class='image'>";
-				echo "<a href='#'><img src=".$x["postImage"]." width='200' height='200' alt='banana bread'></a>";
+				echo "<a href='#'><img src='postImages/".$x["title"].".jpg' width='200' height='200' alt='banana bread'></a>";
 				echo "</div>";
 				echo "<div class='post-right'>";
 				echo "<h2>".$x["title"]."</h2>";
