@@ -1,5 +1,7 @@
+<?php date_default_timezone_set('EST'); ?>
 <a href="?controller=blog" class="backbtn"><i class="icon-arrow-left"></i> back</a>
 <div id="page">
+	<p class="newpost"><?php echo date("m/d/Y"); ?></p>
 	<h1>New Post</h1>
 	<div class="post">
 
@@ -16,6 +18,7 @@
 					<textarea class="field" name="description" value="" placeholder="Description"></textarea>
 					<textarea rows="12" cols="1" wrap="hard" class="field" name="ingredients" value="" placeholder="Ingredients"></textarea>
 					<textarea class="field" name="directions" value="" placeholder="Instructions"></textarea>
+					<input type="hidden" name="date" value="<?php echo date('m/d/Y'); ?>">
 					<input class="submit" type="submit" value="Submit"/>
 				</div>
 			</form>
