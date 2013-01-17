@@ -11,6 +11,7 @@
 			<li><a href="?controller=blog&get=showbycategory&category=news">News</a></li>
 			<li><a href="?controller=blog&get=showbycategory&category=recipe">Recipes</a></li>
 		</ul>
+
 		<?PHP
 			foreach($par as $x){
 				echo "<div class='post'>";

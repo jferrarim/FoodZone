@@ -17,9 +17,9 @@
 
 		<?PHP
 			if(isset($_SESSION["username"])){
-	 		?><a href="?controller=session&get=logout" class="loginbtn">Log Out</a></li><?
+	 		?><a href="?controller=session&get=logout" class="loginbtn">Log Out</a><?
 				}else{
-			?><li><a href="?controller=blog&get=showlogin" class="loginbtn">Log in</a></li><?
+			?><a href="?controller=blog&get=showlogin" class="loginbtn">Log in</a><?
 			}
 		?> 
 

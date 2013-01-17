@@ -46,12 +46,11 @@ if(!empty($_GET["get"])){
 		$editdata = $bmodel->getPost($_GET["id"]);
 		$getv->getView("views/editForm.php", $editdata);
 
-	}else if($_GET["get"] == "updatepost"){
+	}else if($_GET["get"] == "editpost"){
 		
-		$bmodel->update($_POST["uname"], $_POST["image"], $_POST["title"], $_POST["desc"], $_POST["ingredients"], $_POST["directions"], $_POST["id"]);
-		$getv->getView("views/searchForm.php");
+		$bmodel->update($_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["pId"]);
 		$data = $bmodel->getAllPosts();
-		$getv->getView("views/body.php",$data);
+		$getv->getView("views/blog.php",$data);
 
 	}else if($_GET["get"]=="showaddform"){
 		
