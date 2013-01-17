@@ -8,6 +8,18 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 </head> 
 <body>
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+  		var js, fjs = d.getElementsByTagName(s)[0];
+  		if (d.getElementById(id)) return;
+  		js = d.createElement(s); js.id = id;
+ 	 	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+ 		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+	</script>
 <?PHP
 include("model/viewModel.php");
 include("model/blogModel.php");
@@ -62,7 +74,7 @@ if(!empty($_GET["get"])){
 		
 		//var_dump($_FILES["fileName"]);
 
-		$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"]);
+		$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["date"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 

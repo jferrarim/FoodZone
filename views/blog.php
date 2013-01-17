@@ -23,7 +23,7 @@
 				echo "<p class='subtitle'>Posted on <span>".$x["date"]."</span> by <a href='#' class='author'>".$x["username"]."</a>";
 				echo "</p>";
 				echo "<p>".$x["description"]."</p>";
-				echo "<p><a class='facebook-like'>Like</a> 150 Likes</p>";
+				echo "<p><g:plusone></g:plusone><div class='fb-like' data-href='http://localhost:8888/FoodZone/' data-send='false' data-width='300' data-show-faces='false'></div></p>";
 				echo "</div>";
 				echo "<div class='accordion'>";
 				echo "<div class='section ingredients'>";
@@ -36,7 +36,7 @@
 				echo "</div>";
 				echo "<div class='section comments'>";	
 				echo "<a href='#'><h4><i class='icon-plus'></i> Comments</h4></a>";
-				echo "<div>".$x["comments"]."</div>";	
+				echo "<div></div>";	
 				echo "</div>";	
 				echo "</div>";
 

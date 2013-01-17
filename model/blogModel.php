@@ -53,12 +53,12 @@ class blogModel{
 	    
 	}
 
-	 public function addpost($un, $category, $title, $description, $ingredients, $directions){
+	 public function addpost($un, $category, $title, $description, $ingredients, $directions, $date){
 		
 	 	$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-	 	$query = "insert into posts (username, category, title, description, ingredients, directions) values (?, ?, ?, ?, ?, ?)";
+	 	$query = "insert into posts (username, category, title, description, ingredients, directions, date) values (?, ?, ?, ?, ?, ?, ?)";
 	 	$statement = $db->prepare($query);
-	 	$statement->execute(array($un,$category,$title,$description,$ingredients,$directions));
+	 	$statement->execute(array($un,$category,$title,$description,$ingredients,$directions,$date));
  	}
 
 	// public function addpost($un, $category, $title, $description, $ingredients, $directions){
