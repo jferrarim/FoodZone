@@ -276,7 +276,7 @@ span.two{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-textarea.field{
+textarea.field, input.large{
 	height:120px;
 }
 input.upload{
