@@ -13,21 +13,24 @@
 
 	// Accordion
 	var allPanels = $('.accordion div div').hide();
+
+    // show sections
+    var allPanels = $('.accordion div div').show();
     
-  $('.accordion a').bind('click', (function(e) {
+  // $('.accordion a').bind('click', (function(e) {
   
-    if( $(this).hasClass('down') ){
-    	$(this).next().slideUp();
-    	$(this).removeClass('down');
-    	$(this).find('i').removeClass('icon-minus').addClass('icon-plus');
-    }else{
-    	$(this).next().slideDown();
-    	$(this).addClass('down');
-    	$(this).find('i').removeClass('icon-plus').addClass('icon-minus');
-    }
+  //   if( $(this).hasClass('down') ){
+  //   	$(this).next().slideUp();
+  //   	$(this).removeClass('down');
+  //   	$(this).find('i').removeClass('icon-minus').addClass('icon-plus');
+  //   }else{
+  //   	$(this).next().slideDown();
+  //   	$(this).addClass('down');
+  //   	$(this).find('i').removeClass('icon-plus').addClass('icon-minus');
+  //   }
 
-    return false;
+  //   return false;
 
-  }));
+  // }));
 
 })(jQuery);
