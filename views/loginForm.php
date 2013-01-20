@@ -5,10 +5,9 @@
 				<form name="loginForm" action="?controller=session&get=checklogin" method="post">
 					<div id="view">
 						<h2>Login</h2>
-		      	    	<input type="text" name="uname" value="" placeholder="Username"/>
-		      	    	<input type="text" name="email" value="" placeholder="Email"/>
-						<input type="password" name="pass" value="" placeholder="Password"/>
-						<input type="submit" value="Login"/>
+		      	    	<input type="text" class="field" name="uname" value="" placeholder="Username"/>
+						<input type="password" class="field" name="pass" value="" placeholder="Password"/>
+						<input type="submit" class="submit" value="Login"/>
 					</div>
 				</form>
 	   		</div>
