@@ -1,7 +1,7 @@
 	<div id="header">
 		
 	<?PHP
-		if(isset($_SESSION["username"])){
+		if(! empty($_SESSION["username"]['un'])){
 	
 			?><p class="welcome">Welcome <span><? echo $_SESSION['username']['un']; ?></span></p><?
 	
@@ -16,7 +16,7 @@
 		</a>
 
 		<?PHP
-			if(isset($_SESSION["username"])){
+			if(isset($_SESSION["username"]['un'])){
 	 		?><a href="?controller=session&get=logout" class="loginbtn">Log Out</a><?
 				}else{
 			?><a href="?controller=blog&get=showlogin" class="loginbtn">Log in</a><?

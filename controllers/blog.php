@@ -38,37 +38,73 @@ if(!empty($_GET["get"])){
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php", $data);
 	
-	}else if($_GET["get"]=="showbycategory"){	
+	}
 
-		$data = $bmodel->getPosts($_GET["category"]);
-		$getv->getView("views/blog.php", $data);
 
-	}else if($_GET["get"]=="showlogin"){
+	else if($_GET["get"]=="showbycategory"){	
+
+		//$data = $bmodel->getPosts($_GET["category"]);
+		$getv->getView("views/blog.php", array(
+			'categories' => $bmodel->getPosts($_GET["category"]),
+			'page' => $_GET["category"],
+		));
+
+	}
+
+
+	else if($_GET["get"]=="showdetail"){
+
+		//$data = $bmodel->getPost($_GET["id"]);
+		//$getv->getView("views/postDetail.php", $data);
+
+		$getv->getView("views/postDetail.php", array(
+			$ingredients = $bmodel->getIngredients($_GET["id"]),
+			$data = $bmodel->getPost($_GET["id"]),
+		));
+	}
+
+
+	else if($_GET["get"]=="showlogin"){
 
 		$getv->getView("views/loginForm.php");
 	
-	}else if($_GET["get"] == "deletepost"){
+	}
+
+
+	else if($_GET["get"] == "deletepost"){
 		
 		$deletedata = $bmodel->deletepost($_GET["id"]);
 		$deletedata = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php", $deletedata);
 	
-	}else if($_GET["get"] == "showeditform"){
+	}
+
+
+	else if($_GET["get"] == "showeditform"){
 
 		$editdata = $bmodel->getPost($_GET["id"]);
 		$getv->getView("views/editForm.php", $editdata);
 
-	}else if($_GET["get"] == "editpost"){
+	}
+
+
+	else if($_GET["get"] == "editpost"){
 		
 		$bmodel->update($_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["pId"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 
-	}else if($_GET["get"]=="showaddform"){
+	}
+
+
+	else if($_GET["get"]=="showaddform"){
 		
 		$getv->getView("views/postForm.php");
 
-	}else if($_GET["get"] == "addpost"){
+	}
+
+
+	else if($_GET["get"] == "addpost"){
 		
 		$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
 		
@@ -82,11 +118,18 @@ if(!empty($_GET["get"])){
 
 	}
 
-}else{
-	$data = $bmodel->getAllPosts();
-	$getv->getView("views/blog.php", $data);
 }
-	$getv->getView("views/footer.php");
+
+
+else
+{
+	$getv->getView("views/blog.php", array(
+		'categories' => $bmodel->getAllPosts(),
+	));
+}
+
+
+$getv->getView("views/footer.php");
 		
 ?>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
