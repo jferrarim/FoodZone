@@ -1,6 +1,7 @@
 <?
 class blogModel{
 	
+
 	//add, del, update, and view
 	public function getAllPosts(){
 		
@@ -86,6 +87,19 @@ class blogModel{
 		$statement = $db->prepare($query);
 		$statement->execute(array($category,$title,$description,$ingredients,$directions,$id));
 
+	}
+
+	public function getIngredients($id){
+
+		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
+		$query = "select ingredients.id, postId, content from ingredients
+		inner join posts on ingredients.postId = posts.id and posts.id = :passedin order by id asc";
+		$statement = $db->prepare($query);
+		$statement->execute(array(":passedin"=>$id));
+
+		$result = $statement->fetchAll();
+      
+        return $result;	
 	}
 			
 }
