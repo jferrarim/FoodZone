@@ -36,7 +36,7 @@ if(!empty($_GET["get"])){
 	if($_GET["get"]=="blog"){
 		
 		$data = $bmodel->getAllPosts();
-		$getv->getView("views/blog.php", $data);
+		$getv->getView("views/blog.php",$data);
 	
 	}
 
@@ -44,7 +44,7 @@ if(!empty($_GET["get"])){
 	else if($_GET["get"]=="showbycategory"){	
 
 		//$data = $bmodel->getPosts($_GET["category"]);
-		$getv->getView("views/blog.php", array(
+		$getv->getView("views/category.php", array(
 			'categories' => $bmodel->getPosts($_GET["category"]),
 			'page' => $_GET["category"],
 		));
@@ -58,8 +58,8 @@ if(!empty($_GET["get"])){
 		//$getv->getView("views/postDetail.php", $data);
 
 		$getv->getView("views/postDetail.php", array(
-			$ingredients = $bmodel->getIngredients($_GET["id"]),
-			$data = $bmodel->getPost($_GET["id"]),
+			'ingredients' => $bmodel->getIngredients($_GET["id"]),
+			'post' => $bmodel->getPost($_GET["id"]),
 		));
 	}
 
@@ -85,10 +85,13 @@ if(!empty($_GET["get"])){
 		$editdata = $bmodel->getPost($_GET["id"]);
 		$getv->getView("views/editForm.php", $editdata);
 
+		//var_dump($editdata);
 	}
 
 
 	else if($_GET["get"] == "editpost"){
+		
+		$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
 		
 		$bmodel->update($_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["pId"]);
 		$data = $bmodel->getAllPosts();
@@ -110,11 +113,11 @@ if(!empty($_GET["get"])){
 		
 		//var_dump($_FILES["fileName"]);
 
-		$bmodel->addpost($_SESSION["username"]["un"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["date"]);
+		$bmodel->addpost($_SESSION["username"]["un"], $_POST["title"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["date"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 
-		echo $_FILES["fileName"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"];
+		//echo $_FILES["fileName"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"];
 
 	}
 
@@ -123,9 +126,9 @@ if(!empty($_GET["get"])){
 
 else
 {
-	$getv->getView("views/blog.php", array(
-		'categories' => $bmodel->getAllPosts(),
-	));
+	$data = $bmodel->getAllPosts();
+	$getv->getView("views/blog.php",$data);
+
 }
 
 

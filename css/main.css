@@ -290,6 +290,11 @@ a.title:hover{
 .ingredients{
 	width:450px;
 }
+.check{
+	margin-right: 13px;
+	position: relative;
+	top: -4px;
+}
 .directions{
 	width:450px;
 }

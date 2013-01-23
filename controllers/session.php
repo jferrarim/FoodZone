@@ -41,8 +41,8 @@ if($get==""){
 		$_SESSION['loggedin'] = 1;
 		$_SESSION['username'] = $data;
 		$getView->getView("views/blogHeader.php");
-		//$getView->getView("views/blog.php");
-		//$getView->getView("views/footer.php");
+		$getView->getView("views/loginForm.php");
+		$getView->getView("views/footer.php");
 		
 	}else{
 		$getView->getView("views/blogHeader.php");
@@ -65,6 +65,7 @@ if($get==""){
 	$getView->getView("views/blogHeader.php");			
 	$getView->getView("views/loginForm.php");
 	$getView->getView("views/footer.php");	
+
 }
 
 

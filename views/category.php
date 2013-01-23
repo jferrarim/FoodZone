@@ -13,10 +13,10 @@
 		</ul>
 
 		<?PHP
-			foreach($par as $x){
+			foreach($par['categories'] as $x){
 				echo "<div class='post'>";
 				echo "<div class='image'>";
-				echo "<a href='#'><img src='postImages/".$x["title"].".jpg' width='200' height='200' alt='".$x["title"]."'></a>";
+				echo "<a href='#'><img src='postImages/".$x["postImage"].".jpg' width='200' height='200' alt='".$x["title"]."'></a>";
 				echo "</div>";
 				echo "<div class='post-right'>";
 				echo "<a class='title' href='?controller=blog&get=showdetail&id=".$x['id']."'><h2>".$x["title"]."</h2></a>";

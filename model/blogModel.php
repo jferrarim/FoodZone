@@ -31,7 +31,7 @@ class blogModel{
 		
 		$result = $statement->fetchAll();
       
-        return $result;
+        return $result[0];
 
 	}
 
@@ -54,12 +54,12 @@ class blogModel{
 	    
 	}
 
-	 public function addpost($un, $category, $title, $description, $ingredients, $directions, $date){
+	 public function addpost($un, $postImage, $category, $title, $description, $ingredients, $directions, $date){
 		
 	 	$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-	 	$query = "insert into posts (username, category, title, description, ingredients, directions, date) values (?, ?, ?, ?, ?, ?, ?)";
+	 	$query = "insert into posts (username, postImage, category, title, description, ingredients, directions, date) values (?, ?, ?, ?, ?, ?, ?, ?)";
 	 	$statement = $db->prepare($query);
-	 	$statement->execute(array($un,$category,$title,$description,$ingredients,$directions,$date));
+	 	$statement->execute(array($un, $postImage, $category,$title,$description,$ingredients,$directions,$date));
  	}
 
 	// public function addpost($un, $category, $title, $description, $ingredients, $directions){
@@ -83,9 +83,9 @@ class blogModel{
 	public function update($category, $title, $description, $ingredients, $directions, $id){
 
 		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-		$query = "update posts set category = ?, title = ?, description = ?, ingredients = ?, directions = ? where id = ?";
+		$query = "update posts set postImage =?, category = ?, title = ?, description = ?, ingredients = ?, directions = ? where id = ?";
 		$statement = $db->prepare($query);
-		$statement->execute(array($category,$title,$description,$ingredients,$directions,$id));
+		$statement->execute(array($title,$category,$title,$description,$ingredients,$directions,$id));
 
 	}
 
