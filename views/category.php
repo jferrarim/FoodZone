@@ -1,18 +1,20 @@
 		<div id="page">
 			<?php
-
+				// if logged in show the option to add a new post
 				if (isset($_SESSION["username"])){
 					echo "<a href='?controller=blog&get=showaddform' class='newpost'><i class='icon-comment-alt'></i> new post</a>";
 				}
 			?>
 		<h1>Blog</h1>
 		<ul class="categories">
+			<!-- get the category value from the current post, and change .selected class accordingly -->
 			<li><a href="?controller=blog" <?= (! isset($par['page']) or $par['page'] == '') ? 'class="selected"' : null ?>>List All</a></li>
 			<li><a href="?controller=blog&get=showbycategory&category=news" <?= (isset($par['page']) and $par['page'] == 'news') ? 'class="selected"' : null ?>>News</a></li>
 			<li><a href="?controller=blog&get=showbycategory&category=recipe" <?= (isset($par['page']) and $par['page'] == 'recipe') ? 'class="selected"' : null ?>>Recipes</a></li>
 		</ul>
 
 		<?PHP
+			// display the blog data from the database
 			foreach($par['categories'] as $x){
 				echo "<div class='post'>";
 				echo "<div class='image'>";
@@ -27,6 +29,7 @@
 				echo "</div>";
 				echo "<div class='accordion'></div>";
 
+				// if logged in display the option to edit or delete the current post
 				if(isset($_SESSION["username"])){
 	 	
 	 				echo "<a href='?controller=blog&get=deletepost&id=".$x['id']."'' class='deletebtn'><i class='icon-remove-sign'></i> Delete</a>";

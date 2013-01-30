@@ -1,13 +1,3 @@
-<!DOCTYPE html> 
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>FoodZone</title> 
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-</head> 
-<body>
 <?
 include 'model/viewModel.php';
 include 'model/checklogin.php';
@@ -15,6 +5,7 @@ include 'model/checklogin.php';
 $getView = new viewModel();
 $logins = new ckUser();
 
+// if get is set check the username and password
 if(isset($_GET["get"])){
 	$get = $_GET["get"];
 }else{
@@ -23,6 +14,7 @@ if(isset($_GET["get"])){
 
 if($get==""){
 	
+	// if there is no get variable show the header, login form and footer
 	$getView->getView("views/blogHeader.php");
 	$getView->getView("views/loginForm.php");
 	$getView->getView("views/footer.php");
@@ -33,6 +25,7 @@ if($get==""){
 
 }else if($get=="checklogin"){
 	
+	// get the values from the log in form, test against values in the database
 	$data = array("un"=>$_POST["uname"],
 				"pass"=>$_POST["pass"]);
 	$test = $logins->checkUser($data);
@@ -51,6 +44,8 @@ if($get==""){
 		
 	}
 }else if($get=="logout"){
+
+	// set the username to null, destroy the session, show the login form
 	$_SESSION["loggedin"] = 0;
 	$_SESSION["username"] = null;
 	$_SESSION["username"]["un"] = null;
@@ -62,6 +57,7 @@ if($get==""){
 	
 }else{
 	
+	// if there is no get variable show the header, login form and footer
 	$getView->getView("views/blogHeader.php");			
 	$getView->getView("views/loginForm.php");
 	$getView->getView("views/footer.php");	

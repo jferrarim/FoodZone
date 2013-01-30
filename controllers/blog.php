@@ -1,26 +1,4 @@
-<!DOCTYPE html> 
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>FoodZone</title> 
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-</head> 
-<body>
-	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-  		var js, fjs = d.getElementsByTagName(s)[0];
-  		if (d.getElementById(id)) return;
-  		js = d.createElement(s); js.id = id;
- 	 	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
- 		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-	</script>
-<?PHP
+<?php
 include("model/viewModel.php");
 include("model/blogModel.php");
 include("model/imageModel.php");
@@ -29,12 +7,14 @@ $getv = new viewModel();
 $bmodel = new blogModel();
 $imgmodel = new img();
 
+// always display the blog header w/ this controller
 $getv->getView("views/blogHeader.php");
 
 if(!empty($_GET["get"])){
 	
 	if($_GET["get"]=="blog"){
 		
+		// retrieve all blog posts
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 	
@@ -43,7 +23,7 @@ if(!empty($_GET["get"])){
 
 	else if($_GET["get"]=="showbycategory"){	
 
-		//$data = $bmodel->getPosts($_GET["category"]);
+		// get the category, use it to pull all post of that category
 		$getv->getView("views/category.php", array(
 			'categories' => $bmodel->getPosts($_GET["category"]),
 			'page' => $_GET["category"],
@@ -54,9 +34,7 @@ if(!empty($_GET["get"])){
 
 	else if($_GET["get"]=="showdetail"){
 
-		//$data = $bmodel->getPost($_GET["id"]);
-		//$getv->getView("views/postDetail.php", $data);
-
+		// get the category, use it to pull all post of that category
 		$getv->getView("views/postDetail.php", array(
 			'ingredients' => $bmodel->getIngredients($_GET["id"]),
 			'post' => $bmodel->getPost($_GET["id"]),
@@ -66,6 +44,7 @@ if(!empty($_GET["get"])){
 
 	else if($_GET["get"]=="showlogin"){
 
+		// show the login form
 		$getv->getView("views/loginForm.php");
 	
 	}
@@ -73,27 +52,35 @@ if(!empty($_GET["get"])){
 
 	else if($_GET["get"] == "deletepost"){
 		
+		// delete post with ID
 		$deletedata = $bmodel->deletepost($_GET["id"]);
 		$deletedata = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php", $deletedata);
 	
 	}
 
-
 	else if($_GET["get"] == "showeditform"){
 
+		// get the post id from the blog list and display the detail view
 		$editdata = $bmodel->getPost($_GET["id"]);
 		$getv->getView("views/editForm.php", $editdata);
 
-		//var_dump($editdata);
 	}
 
 
 	else if($_GET["get"] == "editpost"){
 		
+		// upload the new picture, store the new filename and the new title
 		$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
 		
+		// update the blog post
 		$bmodel->update($_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["pId"]);
+
+		if( !empty($_FILES["fileName"]["name"])){
+			$bmodel->updateImage($_POST["title"], $_POST["pId"]);
+			var_dump($_FILES["fileName"]);
+		};
+
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
 
@@ -102,22 +89,20 @@ if(!empty($_GET["get"])){
 
 	else if($_GET["get"]=="showaddform"){
 		
+		// show the add form
 		$getv->getView("views/postForm.php");
 
 	}
 
-
 	else if($_GET["get"] == "addpost"){
 		
+		// upload the new picture, store the filename and the title
 		$imgmodel->pictureUpload($_FILES["fileName"],$_POST["title"]);
 		
-		//var_dump($_FILES["fileName"]);
-
+		// take the values from the input form and store it to the database
 		$bmodel->addpost($_SESSION["username"]["un"], $_POST["title"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"], $_POST["date"]);
 		$data = $bmodel->getAllPosts();
 		$getv->getView("views/blog.php",$data);
-
-		//echo $_FILES["fileName"], $_POST["category"], $_POST["title"], $_POST["description"], $_POST["ingredients"], $_POST["directions"];
 
 	}
 
@@ -125,17 +110,14 @@ if(!empty($_GET["get"])){
 
 
 else
-{
+{	
+	// retrieve all blog posts
 	$data = $bmodel->getAllPosts();
 	$getv->getView("views/blog.php",$data);
 
 }
 
-
+// always show the footer view w/ this controller
 $getv->getView("views/footer.php");
 		
 ?>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/custom.js" type="text/javascript"></script>
-</body>
-</html>

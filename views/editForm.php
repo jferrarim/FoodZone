@@ -10,7 +10,6 @@
       	    		<input class="upload" type="file" name="fileName" />
       	    		<select name="category">
       					<option value="news">news</option>
-      					<!--<option value="recipe">recipe</option>-->
  						<option value="recipe" <?php if($par[0]['category'] == 'recipe'){ echo "selected='true'";}?> >recipe</option>
   					</select>
 					<input class="field" type="text" name="title" value="<?php echo $par['title']; ?>" placeholder="Post Title">

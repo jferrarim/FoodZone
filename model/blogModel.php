@@ -83,10 +83,18 @@ class blogModel{
 	public function update($category, $title, $description, $ingredients, $directions, $id){
 
 		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
-		$query = "update posts set postImage =?, category = ?, title = ?, description = ?, ingredients = ?, directions = ? where id = ?";
+		$query = "update posts set category = ?, title = ?, description = ?, ingredients = ?, directions = ? where id = ?";
 		$statement = $db->prepare($query);
-		$statement->execute(array($title,$category,$title,$description,$ingredients,$directions,$id));
+		$statement->execute(array($category,$title,$description,$ingredients,$directions,$id));
 
+	}
+
+	public function updateImage($postImage, $id){
+
+		$db = new \PDO("mysql:hostname=127.0.0.1;port=3306;dbname=foodZone","root","root");
+		$query = "update posts set postImage =? where id = ?";
+		$statement = $db->prepare($query);
+		$statement->execute(array($postImage,$id));
 	}
 
 	public function getIngredients($id){

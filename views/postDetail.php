@@ -8,7 +8,8 @@
 			<a href='#'><img src="postImages/<?= $par['post']["title"] ?>.jpg" width='200' height='200' alt="<?= $par['post']["title"] ?>"></a>
 		</div>
 
-		<?php			
+		<?php	
+				// display the blog data from the database		
 				echo "<div class='post-right'>";
 				echo "<h2 class='title'>".$par['post']["title"]."</h2>";
 				echo "<p class='subtitle'>Posted on <span>".$par['post']["date"]."</span> by <a href='#' class='author'>".$par['post']["username"]."</a>";
@@ -18,10 +19,10 @@
 				echo "</div>";
 				echo "<div class='accordion'>";
 
+				// if the post has a category of recipe display the ingredients and directions content
 				if($par['post']['category'] == 'recipe'){
 					echo "<div class='section ingredients'>";
-					echo "<h4><i class='icon-shopping-cart'></i> Ingredients</h4>";
-					//echo "<div>".$par[0]["ingredients"]."</div>";	
+					echo "<h4><i class='icon-shopping-cart'></i> Ingredients</h4>";	
 					echo "<form><ul>";
 					foreach($par['ingredients'] as $ingredient){
 						echo "<li><input class='check' type='checkbox' name='ingredient' id='".$ingredient["id"]."'><label for='".$ingredient["id"]."'>".$ingredient["content"]."</label></li><br>";
@@ -39,6 +40,7 @@
 				echo "</div>";	
 				echo "</div>";
 
+				// if logged in display the option to edit or delete the current post
 				if(isset($_SESSION["username"])){
 	 	
 	 				echo "<a href='?controller=blog&get=deletepost&id=".$par['post']['id']."'' class='deletebtn'><i class='icon-remove-sign'></i> Delete</a>";
